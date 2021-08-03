@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Mini WAR!</title>
+
+        	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+		<!-- Header -->
+
+		<header>
+            <div class="col-sm-12 text-center" id="home">
+				<h1><u><strong>Mini WAR!</strong></u></h1>
+				
+				<h4><strong>Shuffle and flip two cards. The first card is yours, and the second card is the computer's.
+						The highest card wins. Then, both cards are shuffled back into the deck.</strong></h4>
+				<h4><strong>In case of a draw, the card with the highest suit wins. The suits in highest to lowest order are,</strong></h4> 
+						<h1><strong>♠ > ♥ > ♦ > ♣</strong></h1>	
+            </div>               
+        </header>
+ 
+                <div style= "background-color: #E0D3BB" class="faqPage col-md-12" id="faq">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8">
+                        <h1 class="h1" style= "text-align: center"><strong>Game Board</strong></h1>
+						
+						<button style="display: none; background-color: #F9C47D; height: 160px; width: 135px; font-size:25px; color:black; border-style: solid; border-color: black", onclick="gameFunction()" class="btn btn-primary btn-lg btn-block" id="flip"><strong>FLIP!</strong></button>
+						<button style="display: block", onclick="gameFunction2()" type="button" class="btn btn-primary btn-lg btn-block" id="shuffle"><strong>SHUFFLE CARDS!</strong></button>
+                           
+						   
+                                <li style="display: none; background-color: #E3E0DC; height: 160px; width: 135px; font-size:100px; color:black; border-style: solid; border-color: black", id="c1">A♣</li>
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 135px; font-size:100px; color:red; border-style: solid; border-color: black", id="c2">A♦</li>
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 135px; font-size:100px; color:red; border-style: solid; border-color: black", id="c3">A♥</li>
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 135px; font-size:100px; color:black; border-style: solid; border-color: black", id="c4">A♠</li>
+								
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 135px; font-size:100px; color:black; border-style: solid; border-color: black", id="c5">2♣</li>
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 135px; font-size:100px; color:red; border-style: solid; border-color: black", id="c6">2♦</li>
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 135px; font-size:100px; color:red; border-style: solid; border-color: black", id="c7">2♥</li>
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 135px; font-size:100px; color:black; border-style: solid; border-color: black", id="c8">2♠</li>
+								
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 135px; font-size:100px; color:black; border-style: solid; border-color: black", id="c9">3♣</li>
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 135px; font-size:100px; color:red; border-style: solid; border-color: black", id="c10">3♦</li>
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 135px; font-size:100px; color:red; border-style: solid; border-color: black", id="c11">3♥</li>
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 135px; font-size:100px; color:black; border-style: solid; border-color: black", id="c12">3♠</li>
+								
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 135px; font-size:100px; color:black; border-style: solid; border-color: black", id="c13">4♣</li>								
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 135px; font-size:100px; color:red; border-style: solid; border-color: black", id="c14">4♦</li>
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 135px; font-size:100px; color:red; border-style: solid; border-color: black", id="c15">4♥</li>
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 135px; font-size:100px; color:black; border-style: solid; border-color: black", id="c16">4♠</li>
+								
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 135px; font-size:100px; color:black; border-style: solid; border-color: black", id="c17">5♣</li>
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 135px; font-size:100px; color:red; border-style: solid; border-color: black", id="c18">5♦</li>
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 135px; font-size:100px; color:red; border-style: solid; border-color: black", id="c19">5♥</li>
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 135px; font-size:100px; color:black; border-style: solid; border-color: black", id="c20">5♠</li>
+								
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 135px; font-size:100px; color:black; border-style: solid; border-color: black", id="c21">6♣</li>
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 135px; font-size:100px; color:red; border-style: solid; border-color: black", id="c22">6♦</li>
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 135px; font-size:100px; color:red; border-style: solid; border-color: black", id="c23">6♥</li>
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 135px; font-size:100px; color:black; border-style: solid; border-color: black", id="c24">6♠</li>
+								
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 135px; font-size:100px; color:black; border-style: solid; border-color: black", id="c25">7♣</li>
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 135px; font-size:100px; color:red; border-style: solid; border-color: black", id="c26">7♦</li>								
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 135px; font-size:100px; color:red; border-style: solid; border-color: black", id="c27">7♥</li>
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 135px; font-size:100px; color:black; border-style: solid; border-color: black", id="c28">7♠</li>
+								
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 135px; font-size:100px; color:black; border-style: solid; border-color: black", id="c29">8♣</li>
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 135px; font-size:100px; color:red; border-style: solid; border-color: black", id="c30">8♦</li>
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 135px; font-size:100px; color:red; border-style: solid; border-color: black", id="c31">8♥</li>
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 135px; font-size:100px; color:black; border-style: solid; border-color: black", id="c32">8♠</li>
+								
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 135px; font-size:100px; color:black; border-style: solid; border-color: black", id="c33">9♣</li>
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 135px; font-size:100px; color:red; border-style: solid; border-color: black", id="c34">9♦</li>
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 135px; font-size:100px; color:red; border-style: solid; border-color: black", id="c35">9♥</li>
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 135px; font-size:100px; color:black; border-style: solid; border-color: black", id="c36">9♠</li>
+								
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 180px; font-size:100px; color:black; border-style: solid; border-color: black", id="c37">10♣</li>
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 180px; font-size:100px; color:red; border-style: solid; border-color: black", id="c38">10♦</li>
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 180px; font-size:100px; color:red; border-style: solid; border-color: black", id="c39">10♥</li>								
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 180px; font-size:100px; color:black; border-style: solid; border-color: black", id="c40">10♠</li>
+								
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 135px; font-size:100px; color:black; border-style: solid; border-color: black", id="c41">J♣</li>
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 135px; font-size:100px; color:red; border-style: solid; border-color: black", id="c42">J♦</li>
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 135px; font-size:100px; color:red; border-style: solid; border-color: black", id="c43">J♥</li>
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 135px; font-size:100px; color:black; border-style: solid; border-color: black", id="c44">J♠</li>
+								
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 145px; font-size:100px; color:black; border-style: solid; border-color: black", id="c45">Q♣</li>
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 145px; font-size:100px; color:red; border-style: solid; border-color: black", id="c46">Q♦</li>
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 145px; font-size:100px; color:red; border-style: solid; border-color: black", id="c47">Q♥</li>
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 145px; font-size:100px; color:black; border-style: solid; border-color: black", id="c48">Q♠</li>
+								
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 135px; font-size:100px; color:black; border-style: solid; border-color: black", id="c49">K♣</li>
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 135px; font-size:100px; color:red; border-style: solid; border-color: black", id="c50">K♦</li>
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 135px; font-size:100px; color:red; border-style: solid; border-color: black", id="c51">K♥</li>
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 135px; font-size:100px; color:black; border-style: solid; border-color: black", id="c52">K♠</li>
+								
+
+
+								
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 135px; font-size:100px; color:black; border-style: solid; border-color: black", id="cc1">A♣</li>
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 135px; font-size:100px; color:red; border-style: solid; border-color: black", id="cc2">A♦</li>
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 135px; font-size:100px; color:red; border-style: solid; border-color: black", id="cc3">A♥</li>
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 135px; font-size:100px; color:black; border-style: solid; border-color: black", id="cc4">A♠</li>
+								
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 135px; font-size:100px; color:black; border-style: solid; border-color: black", id="cc5">2♣</li>
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 135px; font-size:100px; color:red; border-style: solid; border-color: black", id="cc6">2♦</li>
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 135px; font-size:100px; color:red; border-style: solid; border-color: black", id="cc7">2♥</li>
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 135px; font-size:100px; color:black; border-style: solid; border-color: black", id="cc8">2♠</li>
+								
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 135px; font-size:100px; color:black; border-style: solid; border-color: black", id="cc9">3♣</li>
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 135px; font-size:100px; color:red; border-style: solid; border-color: black", id="cc10">3♦</li>
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 135px; font-size:100px; color:red; border-style: solid; border-color: black", id="cc11">3♥</li>
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 135px; font-size:100px; color:black; border-style: solid; border-color: black", id="cc12">3♠</li>
+								
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 135px; font-size:100px; color:black; border-style: solid; border-color: black", id="cc13">4♣</li>								
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 135px; font-size:100px; color:red; border-style: solid; border-color: black", id="cc14">4♦</li>
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 135px; font-size:100px; color:red; border-style: solid; border-color: black", id="cc15">4♥</li>
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 135px; font-size:100px; color:black; border-style: solid; border-color: black", id="cc16">4♠</li>
+								
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 135px; font-size:100px; color:black; border-style: solid; border-color: black", id="cc17">5♣</li>
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 135px; font-size:100px; color:red; border-style: solid; border-color: black", id="cc18">5♦</li>
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 135px; font-size:100px; color:red; border-style: solid; border-color: black", id="cc19">5♥</li>
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 135px; font-size:100px; color:black; border-style: solid; border-color: black", id="cc20">5♠</li>
+								
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 135px; font-size:100px; color:black; border-style: solid; border-color: black", id="cc21">6♣</li>
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 135px; font-size:100px; color:red; border-style: solid; border-color: black", id="cc22">6♦</li>
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 135px; font-size:100px; color:red; border-style: solid; border-color: black", id="cc23">6♥</li>
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 135px; font-size:100px; color:black; border-style: solid; border-color: black", id="cc24">6♠</li>
+								
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 135px; font-size:100px; color:black; border-style: solid; border-color: black", id="cc25">7♣</li>
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 135px; font-size:100px; color:red; border-style: solid; border-color: black", id="cc26">7♦</li>								
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 135px; font-size:100px; color:red; border-style: solid; border-color: black", id="cc27">7♥</li>
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 135px; font-size:100px; color:black; border-style: solid; border-color: black", id="cc28">7♠</li>
+								
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 135px; font-size:100px; color:black; border-style: solid; border-color: black", id="cc29">8♣</li>
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 135px; font-size:100px; color:red; border-style: solid; border-color: black", id="cc30">8♦</li>
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 135px; font-size:100px; color:red; border-style: solid; border-color: black", id="cc31">8♥</li>
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 135px; font-size:100px; color:black; border-style: solid; border-color: black", id="cc32">8♠</li>
+								
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 135px; font-size:100px; color:black; border-style: solid; border-color: black", id="cc33">9♣</li>
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 135px; font-size:100px; color:red; border-style: solid; border-color: black", id="cc34">9♦</li>
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 135px; font-size:100px; color:red; border-style: solid; border-color: black", id="cc35">9♥</li>
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 135px; font-size:100px; color:black; border-style: solid; border-color: black", id="cc36">9♠</li>
+								
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 180px; font-size:100px; color:black; border-style: solid; border-color: black", id="cc37">10♣</li>
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 180px; font-size:100px; color:red; border-style: solid; border-color: black", id="cc38">10♦</li>
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 180px; font-size:100px; color:red; border-style: solid; border-color: black", id="cc39">10♥</li>								
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 180px; font-size:100px; color:black; border-style: solid; border-color: black", id="cc40">10♠</li>
+								
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 135px; font-size:100px; color:black; border-style: solid; border-color: black", id="cc41">J♣</li>
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 135px; font-size:100px; color:red; border-style: solid; border-color: black", id="cc42">J♦</li>
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 135px; font-size:100px; color:red; border-style: solid; border-color: black", id="cc43">J♥</li>
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 135px; font-size:100px; color:black; border-style: solid; border-color: black", id="cc44">J♠</li>
+								
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 145px; font-size:100px; color:black; border-style: solid; border-color: black", id="cc45">Q♣</li>
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 145px; font-size:100px; color:red; border-style: solid; border-color: black", id="cc46">Q♦</li>
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 145px; font-size:100px; color:red; border-style: solid; border-color: black", id="cc47">Q♥</li>
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 145px; font-size:100px; color:black; border-style: solid; border-color: black", id="cc48">Q♠</li>
+								
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 135px; font-size:100px; color:black; border-style: solid; border-color: black", id="cc49">K♣</li>
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 135px; font-size:100px; color:red; border-style: solid; border-color: black", id="cc50">K♦</li>
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 135px; font-size:100px; color:red; border-style: solid; border-color: black", id="cc51">K♥</li>
+								<li style="display: none; background-color: #E3E0DC; height: 160px; width: 135px; font-size:100px; color:black; border-style: solid; border-color: black", id="cc52">K♠</li>
+								
+								<p style="font-size:50px"id="randomness"></p>
+
+
+<script>
+
+function gameFunction() 
+{	
+	
+	var flip = document.getElementById("flip");
+	var shuffle = document.getElementById("shuffle");
+	
+	
+	flip.style.display = "none";
+	shuffle.style.display = "block";
+
+	var random = Math.floor(Math.random() * 52);
+	var random2 = Math.floor(Math.random() * 52);
+
+	while (random2 === random)
+	{
+		random2 = Math.floor(Math.random() * 52);
+	}
+	
+	const cards = [];
+
+	cards[0] = document.getElementById("c1");
+	cards[1] = document.getElementById("c2");
+	cards[2] = document.getElementById("c3");
+	cards[3] = document.getElementById("c4");
+	cards[4] = document.getElementById("c5");
+	cards[5] = document.getElementById("c6");
+	cards[6] = document.getElementById("c7");
+	cards[7] = document.getElementById("c8");
+	cards[8] = document.getElementById("c9");
+	cards[9] = document.getElementById("c10");
+	cards[10] = document.getElementById("c11");
+	cards[11] = document.getElementById("c12");
+	cards[12] = document.getElementById("c13");
+	cards[13] = document.getElementById("c14");
+	cards[14] = document.getElementById("c15");
+	cards[15] = document.getElementById("c16");
+	cards[16] = document.getElementById("c17");
+	cards[17] = document.getElementById("c18");
+	cards[18] = document.getElementById("c19");
+	cards[19] = document.getElementById("c20");
+	cards[20] = document.getElementById("c21");
+	cards[21] = document.getElementById("c22");
+	cards[22] = document.getElementById("c23");
+	cards[23] = document.getElementById("c24");
+	cards[24] = document.getElementById("c25");
+	cards[25] = document.getElementById("c26");
+	cards[26] = document.getElementById("c27");
+	cards[27] = document.getElementById("c28");
+	cards[28] = document.getElementById("c29");
+	cards[29] = document.getElementById("c30");
+	cards[30] = document.getElementById("c31");
+	cards[31] = document.getElementById("c32");
+	cards[32] = document.getElementById("c33");
+	cards[33] = document.getElementById("c34");
+	cards[34] = document.getElementById("c35");
+	cards[35] = document.getElementById("c36");
+	cards[36] = document.getElementById("c37");
+	cards[37] = document.getElementById("c38");
+	cards[38] = document.getElementById("c39");
+	cards[39] = document.getElementById("c40");
+	cards[40] = document.getElementById("c41");
+	cards[41] = document.getElementById("c42");
+	cards[42] = document.getElementById("c43");
+	cards[43] = document.getElementById("c44");
+	cards[44] = document.getElementById("c45");
+	cards[45] = document.getElementById("c46");
+	cards[46] = document.getElementById("c47");
+	cards[47] = document.getElementById("c48");
+	cards[48] = document.getElementById("c49");
+	cards[49] = document.getElementById("c50");
+	cards[50] = document.getElementById("c51");
+	cards[51] = document.getElementById("c52");
+	
+	
+	const cards2 = [];
+
+	cards2[0] = document.getElementById("cc1");
+	cards2[1] = document.getElementById("cc2");
+	cards2[2] = document.getElementById("cc3");
+	cards2[3] = document.getElementById("cc4");
+	cards2[4] = document.getElementById("cc5");
+	cards2[5] = document.getElementById("cc6");
+	cards2[6] = document.getElementById("cc7");
+	cards2[7] = document.getElementById("cc8");
+	cards2[8] = document.getElementById("cc9");
+	cards2[9] = document.getElementById("cc10");
+	cards2[10] = document.getElementById("cc11");
+	cards2[11] = document.getElementById("cc12");
+	cards2[12] = document.getElementById("cc13");
+	cards2[13] = document.getElementById("cc14");
+	cards2[14] = document.getElementById("cc15");
+	cards2[15] = document.getElementById("cc16");
+	cards2[16] = document.getElementById("cc17");
+	cards2[17] = document.getElementById("cc18");
+	cards2[18] = document.getElementById("cc19");
+	cards2[19] = document.getElementById("cc20");
+	cards2[20] = document.getElementById("cc21");
+	cards2[21] = document.getElementById("cc22");
+	cards2[22] = document.getElementById("cc23");
+	cards2[23] = document.getElementById("cc24");
+	cards2[24] = document.getElementById("cc25");
+	cards2[25] = document.getElementById("cc26");
+	cards2[26] = document.getElementById("cc27");
+	cards2[27] = document.getElementById("cc28");
+	cards2[28] = document.getElementById("cc29");
+	cards2[29] = document.getElementById("cc30");
+	cards2[30] = document.getElementById("cc31");
+	cards2[31] = document.getElementById("cc32");
+	cards2[32] = document.getElementById("cc33");
+	cards2[33] = document.getElementById("cc34");
+	cards2[34] = document.getElementById("cc35");
+	cards2[35] = document.getElementById("cc36");
+	cards2[36] = document.getElementById("cc37");
+	cards2[37] = document.getElementById("cc38");
+	cards2[38] = document.getElementById("cc39");
+	cards2[39] = document.getElementById("cc40");
+	cards2[40] = document.getElementById("cc41");
+	cards2[41] = document.getElementById("cc42");
+	cards2[42] = document.getElementById("cc43");
+	cards2[43] = document.getElementById("cc44");
+	cards2[44] = document.getElementById("cc45");
+	cards2[45] = document.getElementById("cc46");
+	cards2[46] = document.getElementById("cc47");
+	cards2[47] = document.getElementById("cc48");
+	cards2[48] = document.getElementById("cc49");
+	cards2[49] = document.getElementById("cc50");
+	cards2[50] = document.getElementById("cc51");
+	cards2[51] = document.getElementById("cc52");
+  
+	cards[random].style.display = "block";
+	cards2[random2].style.display = "block";
+  
+  if (random > random2)
+  {	
+	document.getElementById("randomness").innerHTML = "YOU WIN!";
+  }
+  else
+  {
+	document.getElementById("randomness").innerHTML = "YOU LOSE!";
+  }
+}
+
+function gameFunction2() 
+{
+	var flip = document.getElementById("flip");
+	var shuffle = document.getElementById("shuffle");
+	
+	flip.style.display = "block";
+	shuffle.style.display = "none";
+	
+	var c1 = document.getElementById("c1");
+	var c2 = document.getElementById("c2");
+	var c3 = document.getElementById("c3");
+	var c4 = document.getElementById("c4");
+	var c5 = document.getElementById("c5");
+	var c6 = document.getElementById("c6");
+	var c7 = document.getElementById("c7");
+	var c8 = document.getElementById("c8");
+	var c9 = document.getElementById("c9");
+	var c10 = document.getElementById("c10");
+	var c11 = document.getElementById("c11");
+	var c12 = document.getElementById("c12");
+	var c13 = document.getElementById("c13");
+	var c14 = document.getElementById("c14");
+	var c15 = document.getElementById("c15");
+	var c16 = document.getElementById("c16");
+	var c17 = document.getElementById("c17");
+	var c18 = document.getElementById("c18");
+	var c19 = document.getElementById("c19");
+	var c20 = document.getElementById("c20");
+	var c21 = document.getElementById("c21");
+	var c22 = document.getElementById("c22");
+	var c23 = document.getElementById("c23");
+	var c24 = document.getElementById("c24");
+	var c25 = document.getElementById("c25");
+	var c26 = document.getElementById("c26");
+	var c27 = document.getElementById("c27");
+	var c28 = document.getElementById("c28");
+	var c29 = document.getElementById("c29");
+	var c30 = document.getElementById("c30");
+	var c31 = document.getElementById("c31");
+	var c32 = document.getElementById("c32");
+	var c33 = document.getElementById("c33");
+	var c34 = document.getElementById("c34");
+	var c35 = document.getElementById("c35");
+	var c36 = document.getElementById("c36");
+	var c37 = document.getElementById("c37");
+	var c38 = document.getElementById("c38");
+	var c39 = document.getElementById("c39");
+	var c40 = document.getElementById("c40");
+	var c41 = document.getElementById("c41");
+	var c42 = document.getElementById("c42");
+	var c43 = document.getElementById("c43");
+	var c44 = document.getElementById("c44");
+	var c45 = document.getElementById("c45");
+	var c46 = document.getElementById("c46");
+	var c47 = document.getElementById("c47");
+	var c48 = document.getElementById("c48");
+	var c49 = document.getElementById("c49");
+	var c50 = document.getElementById("c50");
+	var c51 = document.getElementById("c51");
+	var c52 = document.getElementById("c52");
+	
+	var cc1 = document.getElementById("cc1");
+	var cc2 = document.getElementById("cc2");
+	var cc3 = document.getElementById("cc3");
+	var cc4 = document.getElementById("cc4");
+	var cc5 = document.getElementById("cc5");
+	var cc6 = document.getElementById("cc6");
+	var cc7 = document.getElementById("cc7");
+	var cc8 = document.getElementById("cc8");
+	var cc9 = document.getElementById("cc9");
+	var cc10 = document.getElementById("cc10");
+	var cc11 = document.getElementById("cc11");
+	var cc12 = document.getElementById("cc12");
+	var cc13 = document.getElementById("cc13");
+	var cc14 = document.getElementById("cc14");
+	var cc15 = document.getElementById("cc15");
+	var cc16 = document.getElementById("cc16");
+	var cc17 = document.getElementById("cc17");
+	var cc18 = document.getElementById("cc18");
+	var cc19 = document.getElementById("cc19");
+	var cc20 = document.getElementById("cc20");
+	var cc21 = document.getElementById("cc21");
+	var cc22 = document.getElementById("cc22");
+	var cc23 = document.getElementById("cc23");
+	var cc24 = document.getElementById("cc24");
+	var cc25 = document.getElementById("cc25");
+	var cc26 = document.getElementById("cc26");
+	var cc27 = document.getElementById("cc27");
+	var cc28 = document.getElementById("cc28");
+	var cc29 = document.getElementById("cc29");
+	var cc30 = document.getElementById("cc30");
+	var cc31 = document.getElementById("cc31");
+	var cc32 = document.getElementById("cc32");
+	var cc33 = document.getElementById("cc33");
+	var cc34 = document.getElementById("cc34");
+	var cc35 = document.getElementById("cc35");
+	var cc36 = document.getElementById("cc36");
+	var cc37 = document.getElementById("cc37");
+	var cc38 = document.getElementById("cc38");
+	var cc39 = document.getElementById("cc39");
+	var cc40 = document.getElementById("cc40");
+	var cc41 = document.getElementById("cc41");
+	var cc42 = document.getElementById("cc42");
+	var cc43 = document.getElementById("cc43");
+	var cc44 = document.getElementById("cc44");
+	var cc45 = document.getElementById("cc45");
+	var cc46 = document.getElementById("cc46");
+	var cc47 = document.getElementById("cc47");
+	var cc48 = document.getElementById("cc48");
+	var cc49 = document.getElementById("cc49");
+	var cc50 = document.getElementById("cc50");
+	var cc51 = document.getElementById("cc51");
+	var cc52 = document.getElementById("cc52");
+	
+	c1.style.display = "none";
+	c2.style.display = "none";
+	c3.style.display = "none";
+	c4.style.display = "none";
+	c5.style.display = "none";
+	c6.style.display = "none";
+	c7.style.display = "none";
+	c8.style.display = "none";
+	c9.style.display = "none";
+	c10.style.display = "none";
+	c11.style.display = "none";
+	c12.style.display = "none";
+	c13.style.display = "none";
+	c14.style.display = "none";
+	c15.style.display = "none";
+	c16.style.display = "none";
+	c17.style.display = "none";
+	c18.style.display = "none";
+	c19.style.display = "none";
+	c20.style.display = "none";
+	c21.style.display = "none";
+	c22.style.display = "none";
+	c23.style.display = "none";
+	c24.style.display = "none";
+	c25.style.display = "none";
+	c26.style.display = "none";
+	c27.style.display = "none";
+	c28.style.display = "none";
+	c29.style.display = "none";
+	c30.style.display = "none";
+	c31.style.display = "none";
+	c32.style.display = "none";
+	c33.style.display = "none";
+	c34.style.display = "none";
+	c35.style.display = "none";
+	c36.style.display = "none";
+	c37.style.display = "none";
+	c38.style.display = "none";
+	c39.style.display = "none";
+	c40.style.display = "none";
+	c41.style.display = "none";
+	c42.style.display = "none";
+	c43.style.display = "none";
+	c44.style.display = "none";
+	c45.style.display = "none";
+	c46.style.display = "none";
+	c47.style.display = "none";
+	c48.style.display = "none";
+	c49.style.display = "none";
+	c50.style.display = "none";
+	c51.style.display = "none";
+	c52.style.display = "none";
+	
+	cc1.style.display = "none";
+	cc2.style.display = "none";
+	cc3.style.display = "none";
+	cc4.style.display = "none";
+	cc5.style.display = "none";
+	cc6.style.display = "none";
+	cc7.style.display = "none";
+	cc8.style.display = "none";
+	cc9.style.display = "none";
+	cc10.style.display = "none";
+	cc11.style.display = "none";
+	cc12.style.display = "none";
+	cc13.style.display = "none";
+	cc14.style.display = "none";
+	cc15.style.display = "none";
+	cc16.style.display = "none";
+	cc17.style.display = "none";
+	cc18.style.display = "none";
+	cc19.style.display = "none";
+	cc20.style.display = "none";
+	cc21.style.display = "none";
+	cc22.style.display = "none";
+	cc23.style.display = "none";
+	cc24.style.display = "none";
+	cc25.style.display = "none";
+	cc26.style.display = "none";
+	cc27.style.display = "none";
+	cc28.style.display = "none";
+	cc29.style.display = "none";
+	cc30.style.display = "none";
+	cc31.style.display = "none";
+	cc32.style.display = "none";
+	cc33.style.display = "none";
+	cc34.style.display = "none";
+	cc35.style.display = "none";
+	cc36.style.display = "none";
+	cc37.style.display = "none";
+	cc38.style.display = "none";
+	cc39.style.display = "none";
+	cc40.style.display = "none";
+	cc41.style.display = "none";
+	cc42.style.display = "none";
+	cc43.style.display = "none";
+	cc44.style.display = "none";
+	cc45.style.display = "none";
+	cc46.style.display = "none";
+	cc47.style.display = "none";
+	cc48.style.display = "none";
+	cc49.style.display = "none";
+	cc50.style.display = "none";
+	cc51.style.display = "none";
+	cc52.style.display = "none";
+}
+</script>
+</div>   
+</div>      
+
+</body>
+</html>
