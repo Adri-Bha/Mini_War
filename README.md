@@ -17,4 +17,11 @@ Spades > Hearts > Diamonds > Clubs <br>
 ♠ > ♥ > ♦ > ♣
 
 <h3>Development:</h3>
-This web-based game was developed entirely using HTML5, CSS3 and JavaScript. The basic outline and aesthetics were done using HTML and CSS, and all of the functionalities were programmed using JavaScript.
+This web-based game was developed entirely using HTML5, CSS3 and JavaScript. The basic outline and aesthetics were done using HTML and CSS, and all of the functionalities were programmed using JavaScript. <br><br>
+
+<h3>Win and Lose Conditions:</h3>
+
+
+![ScreenShot](Win_Condition.jpg)
+
+![ScreenShot](Lose_Condition.jpg)
